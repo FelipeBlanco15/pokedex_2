@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex Base - Projeto Portfólio</title>
+
+    <!-- Fonte Google: Outfit para um visual moderno e limpo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Estilos CSS do Projeto -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================================================================= -->
+    <!-- CABEÇALHO (HEADER): Navegação, Busca e Alternador de Modo Didático -->
+    <!-- ================================================================= -->
+    <header class="navbar">
+        <div class="container navbar-container">
+            <div class="logo">
+                <div class="pokeball-icon"></div>
+                <h1>Poké<span>Dex</span> <small class="badge-portfolio">Base Portfólio</small></h1>
+            </div>
+
+            <!-- Navegação para alternar entre o App e o Guia de Aprendizado -->
+            <nav class="nav-tabs">
+                <button id="tab-pokedex-btn" class="nav-tab-btn active">
+                    <i class="fa-solid fa-gamepad"></i> Pokédex App
+                </button>
+                <button id="tab-guide-btn" class="nav-tab-btn">
+                    <i class="fa-solid fa-book-open"></i> Guia: O Que & Como Usou
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+
+        <!-- ================================================================= -->
+        <!-- SEÇÃO 1: VISÃO DA POKÉDEX (APP) -->
+        <!-- ================================================================= -->
+        <section id="pokedex-section" class="tab-content active">
+
+            <!-- Barra de Ferramentas: Busca e Filtros por Tipo -->
+            <div class="toolbar">
+                <!-- Busca por Nome ou ID -->
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input"
+                        placeholder="Buscar Pokémon por nome ou número (ex: Pikachu, 25)..." autocomplete="off">
+                    <button id="clear-search-btn" class="clear-btn hidden"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <!-- Filtro por Tipo de Pokémon -->
+                <div class="filter-box">
+                    <select id="type-select">
+                        <option value="all">⚡ Todos os Tipos</option>
+                        <option value="fire">🔥 Fogo (Fire)</option>
+                        <option value="water">💧 Água (Water)</option>
+                        <option value="grass">🍃 Planta (Grass)</option>
+                        <option value="electric">⚡ Elétrico (Electric)</option>
+                        <option value="psychic">🔮 Psíquico (Psychic)</option>
+                        <option value="ice">❄️ Gelo (Ice)</option>
+                        <option value="dragon">🐉 Dragão (Dragon)</option>
+                        <option value="ghost">👻 Fantasma (Ghost)</option>
+                        <option value="dark">🌙 Noturno (Dark)</option>
+                        <option value="poison">☠️ Veneno (Poison)</option>
+                        <option value="ground">🌍 Terra (Ground)</option>
+                        <option value="rock">🪨 Pedra (Rock)</option>
+                        <option value="bug">🐛 Inseto (Bug)</option>
+                        <option value="steel">⚙️ Aço (Steel)</option>
+                        <option value="fairy">✨ Fada (Fairy)</option>
+                    </select>
+                </div>
+
+                <!-- contador de pokemons favoritos --> 
+                <button id="favorites-toggle-btn" class="favorites-btn">
+                    <i class="fa-solid fa-heart"></i> Favoritos <span id="fav-count" class="fav-badge">0</span>
+                </button>
+            </div>
+
+            <!-- Indicador de Status/Mensagem -->
+            <div id="status-message" class="status-message hidden"></div>
+
+            <!-- Skeletons de Carregamento -->
+            <div id="loading-spinner" class="loading-grid">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+
+            <!-- Grid onde os Cards de Pokémon são exibidos pelo javascript  -->
+            <div id="pokemon-grid" class="pokemon-grid"></div>
+
+            <!-- Botão Carregar Mais -->
+            <div class="load-more-container">
+                <button id="load-more-btn" class="btn-primary">
+                    <i class="fa-solid fa-rotate-right"></i> Carregar Mais Pokémon
+                </button>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- SEÇÃO 2: GUIA TÉCNICO  ("O Que Usei e Como Usei") -->
+        <!-- ================================================================= -->
+        <section id="guide-section" class="tab-content">
+            <div class="guide-card">
+                <h2>Guia de Arquitetura & Tecnologias Utilizadas</h2>
+                <p class="guide-intro">
+                    Este documento detalha tudo o que foi utilizado neste projeto base, como os componentes foram
+                    estruturados,
+                    como a PokéAPI foi consumida via requisições assíncronas.
+                </p>
+
+                <div class="guide-grid">
+                    <!-- Tecnologias -->
+                    <div class="guide-item">
+                        <div class="guide-icon"><i class="fa-brands fa-html5"></i></div>
+                        <h3>1. HTML5 Semântico</h3>
+                        <p><strong>O que foi usado:</strong> Tags semânticas como <code>&lt;header&gt;</code>,
+                            <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code> e
+                            <code>&lt;dialog&gt;</code>.
+                        </p>
+                        <p><strong>Como foi usado:</strong> Garante acessibilidade (screen readers), SEO estruturado e
+                            organização modular das seções da Pokédex e do guia didático.</p>
+                    </div>
+
+                    <!-- Bloco 2: CSS3 -->
+                    <div class="guide-item">
+                        <div class="guide-icon"><i class="fa-brands fa-css3-alt"></i></div>
+                        <h3>2. CSS3 Moderno</h3>
+                        <p><strong>O que foi usado:</strong> Variáveis CSS (Custom Properties), Flexbox, CSS Grid
+                            responsivo, Glassmorphic UI e animações <code>@keyframes</code>.</p>
+                        <p><strong>Como foi usado:</strong> Definimos temas de cores por tipo de Pokémon (ex: Fogo =
+                            Laranja/Vermelho, Água = Azul) e sombras com profundidade sem utilizar frameworks externos.
+                        </p>
+                    </div>
+
+                    <!-- Bloco 3: JavaScript & API -->
+                    <div class="guide-item">
+                        <div class="guide-icon"><i class="fa-brands fa-js"></i></div>
+                        <h3>3. JavaScript ES6+ & Fetch API</h3>
+                        <p><strong>O que foi usado:</strong> <code>async/await</code>, <code>fetch()</code>,
+                            <code>Promise.all()</code>, Arrow Functions e Manipulação dinâmica da DOM.
+                        </p>
+                        <p><strong>Como foi usado:</strong> Fazemos requisições para a REST API pública
+                            <code>https://pokeapi.co/api/v2/pokemon</code> e parseamos as respostas JSON para criar
+                            cards dinâmicos na tela.
+                        </p>
+                    </div>
+
+                    <!-- Bloco 4: PokéAPI -->
+                    <div class="guide-item">
+                        <div class="guide-icon"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+                        <h3>4. REST API (PokéAPI)</h3>
+                        <p><strong>Endpoints Principais:</strong></p>
+                        <ul class="guide-list">
+                            <li><code>GET /pokemon?limit=24&offset=0</code>: Lista inicial com nomes e URLs de detalhes.
+                            </li>
+                            <li><code>GET /pokemon/{id_ou_nome}</code>: Detalhes do Pokémon (estatísticas, tipos, peso,
+                                altura e artes em HD).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Seção de Desafios Pendentes para Portfólio -->
+                <div class="portfolio-challenges-box">
+                    <h3>🎯 Desafios Marcados no Código para o Seu Portfólio</h3>
+                    <p>O código JavaScript (<code>script.js</code>) e CSS possuem comentários detalhados marcando
+                        <strong>desafios guiados</strong> para você implementar e completar o projeto:
+                    </p>
+
+                    <div class="challenges-list">
+                        <div class="challenge-card">
+                            <span class="challenge-tag tag-easy">Fácil</span>
+                            <h4>Desafio 1: Filtro Dinâmico por Tipo</h4>
+                            <p>No <code>script.js</code>, implemente a lógica na função <code>handleTypeFilter()</code>
+                                para filtrar a lista atual de Pokémon com base na opção selecionada no seletor de tipos.
+                            </p>
+                        </div>
+
+                        <div class="challenge-card">
+                            <span class="challenge-tag tag-medium">Médio</span>
+                            <h4>Desafio 2: Sistema de Favoritos com LocalStorage</h4>
+                            <p>Crie as funções <code>toggleFavorite(id)</code> e <code>loadFavorites()</code> para
+                                permitir que o usuário marque Pokémons com um coração e salve no navegador.</p>
+                        </div>
+
+                        <div class="challenge-card">
+                            <span class="challenge-tag tag-medium">Médio</span>
+                            <h4>Desafio 3: Botão Alternador de Sprite Shiny</h4>
+                            <p>No modal de detalhes, adicione um botão para trocar a imagem normal (art oficial) pela
+                                versão <strong>Shiny</strong> retornada pela API (<code>sprites.front_shiny</code>).</p>
+                        </div>
+
+                        <div class="challenge-card">
+                            <span class="challenge-tag tag-hard">Avançado</span>
+                            <h4>Desafio 4: Reprodutor de Áudio (Cries dos Pokémon)</h4>
+                            <p>A PokéAPI fornece um áudio com o grito de cada Pokémon em <code>cries.latest</code>.
+                                Adicione um botão de alto-falante no modal para tocar o som!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================================================================= -->
+    <!-- MODAL DE DETALHES DO POKÉMON -->
+    <!-- ================================================================= -->
+    <div id="pokemon-modal" class="modal-backdrop hidden">
+        <div class="modal-container">
+            <button id="close-modal-btn" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modal-content" class="modal-content-body">
+                <!-- Conteúdo do modal será injetado dinamicamente via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- RODAPÉ (FOOTER) -->
+    <!-- ================================================================= -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>Pokédex Base desenvolvida para aprendizado e portfólio | Consumindo a <a href="https://pokeapi.co/"
+                    target="_blank" rel="noopener">PokéAPI</a></p>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript Principal -->
+    <script src="app.js"></script>
+</body>
+
+</html>
