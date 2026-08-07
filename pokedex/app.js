@@ -1,8 +1,5 @@
 /* ==========================================================================
    POKÉDEX PROJETO COMPLETO PARA PORTFÓLIO - LÓGICA JAVASCRIPT
-   --------------------------------------------------------------------------
-   ESTE ARQUIVO CONTÉM TODOS OS DESAFIOS RESOLVIDOS COM EXPLICAÇÕES PASSO A PASSO
-   PARA VOCÊ APRENDER E APRESENTAR COM CONFIANÇA NO SEU PORTFÓLIO!
    ========================================================================== */
 
 // --------------------------------------------------------------------------
